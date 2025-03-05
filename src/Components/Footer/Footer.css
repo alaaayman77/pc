@@ -1,0 +1,45 @@
+.footer-container {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.421);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 100;
+  padding: 4em 0em;
+}
+
+.footer {
+  font-size: 10px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+  grid-template-rows: auto;
+  font-weight: 100;
+  column-gap: 30px;
+}
+.get-started-container {
+  background-color: aqua;
+  display: grid;
+  grid-template-rows: auto;
+}
+.account-container {
+  background-color: brown;
+}
+.pcsmith-container {
+  background-color: blueviolet;
+}
+
+.footer-logo {
+  background-color: chartreuse;
+  display: flex;
+  justify-content: center;
+}
+.footer-btn {
+  background-color: pink;
+}
+.footer-moto {
+  background-color: darkgrey;
+}
+.footer-links {
+  background-color: blanchedalmond;
+}

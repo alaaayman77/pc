@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Red+Rose:wght@300..700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Red Rose", serif;
+}
+
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: calc(
+    100% - 20px
+  ); /* Reduces width slightly to prevent touching scrollbar */
+  margin: 0 auto; /* Centers the navbar */
+  padding: 10px 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+header {
+  margin-top: 1em;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 2em;
+  width: 95%;
+  max-width: 1200px;
+  background-color: #e1deded2;
+}
+.logo-container {
+  flex: 0.2;
+}
+.navigation-main .header-list {
+  display: flex;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.navigation-main .header-list.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.search-bar-container {
+  display: flex;
+  flex: 2;
+}
+.search-input {
+  width: 100%;
+  padding: 8px;
+}
+
+.search-bar.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav-components {
+  display: flex;
+  flex: 2;
+
+  /* background-color: red; */
+}
+.navigation-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 3;
+}
+
+.icons-container {
+  display: flex;
+  flex: 1.5;
+  justify-content: flex-end;
+  gap: 1.5em;
+}
+.icons {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1em;
+}
+
+.actual-btn {
+  display: flex;
+  flex: 1;
+  gap: 0.5em;
+}
+
+.header-list {
+  display: flex;
+  gap: 3em;
+  justify-content: center;
+  color: #ffffff4a;
+  font-weight: bold;
+}
+
+.ai-button {
+  background-color: #621c74;
+  padding: 10px 16px;
+  border-radius: 15px;
+  white-space: nowrap; /* Prevents text from wrapping */
+  display: inline-flex; /* Ensures button does not stretch */
+  align-items: center;
+  justify-content: center;
+  min-width: 80px; /* Prevents excessive shrinking */
+  max-width: 120px; /* Prevents excessive stretching */
+}
+.log-button {
+  white-space: nowrap; /* Prevents text from wrapping */
+  display: inline-flex; /* Ensures button does not stretch */
+  align-items: center;
+  justify-content: center;
+  min-width: 80px; /* Prevents excessive shrinking */
+  max-width: 120px; /* Prevents excessive stretching */
+}
+.nav-btn {
+  display: none; /* Hide by default on larger screens */
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--textColor);
+  font-size: 1.8rem;
+}
+
+@media only screen and (max-width: 1024px) {
+  .nav-btn {
+    display: block;
+  }
+  .navbar-container {
+    max-width: 1024px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-components {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #e1dede;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    pointer-events: none; /* Prevent interactions when hidden */
+  }
+  .header-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: flex-end;
+    align-items: center;
+    height: 70vh;
+    font-size: larger;
+    font-weight: bold;
+  }
+  .navigation-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .icons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+  }
+
+  .actual-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .log-button {
+    padding: 10px 16px;
+    border-radius: 15px;
+    white-space: nowrap; /* Prevents text from wrapping */
+    /* Ensures it only takes necessary space */
+    max-width: fit-content; /* Prevents stretching */
+  }
+
+  .ai-button {
+    background-color: #621c74;
+    padding: 10px 16px;
+    border-radius: 15px;
+    white-space: nowrap; /* Prevents text from wrapping */
+    /* Ensures it only takes necessary space */
+    max-width: fit-content; /* Prevents stretching */
+  }
+
+  /* Show Navigation when active */
+  .responsive_nav {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all; /* Allow interactions when shown */
+    /* Show when toggled */
+  }
+
+  /* Close Button Inside the Nav */
+  .nav-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 2rem;
+    color: var(--textColor);
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  /* Hide menu button (bars) when nav is open */
+  .hide {
+    display: none;
+  }
+}
