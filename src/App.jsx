@@ -1,8 +1,4 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import NavBar from "./Components/NavBar/NavBar";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Builder from "./Components/Builder/Builder";
@@ -14,6 +10,8 @@ import NotFound from "./Components/NotFound/NotFound";
 import Profile from "./Components/Profile/Profile";
 import Login from "./Components/Login/login";
 import Signup from "./Components/Signup/Signup";
+import AIAssistant from "./Components/AIAssistant/AIAssistant";
+import ProfileBuildCard from "./Components/ProfileCompletedBuild/ProfileBuildCard";
 
 let x = createBrowserRouter([
   {
@@ -26,11 +24,14 @@ let x = createBrowserRouter([
       { path: "community", element: <Community /> },
       { path: "browsecomponents", element: <BrowseComponents /> },
       { path: "profile", element: <Profile /> },
-      { path: "*", element: <NotFound /> },
+      { path: "ai_assistant", element: <AIAssistant /> },
+
+      { path: "*", element: <ProfileBuildCard /> },
     ],
   },
   { path: "login", element: <Login /> },
   { path: "signup", element: <Signup /> },
+  ,
 ]);
 function App() {
   return (
