@@ -10,11 +10,14 @@ const BrowseComponentList = ({
   toggleCompare,
 }) => {
   return (
-    <div className="row">
-      {components.length > 0 ? (
-        components.map((component) => (
-          <div key={component._id} className="w-1/3 px-2">
-            <div className="component_card">
+    <div className="browsecomponents_products ">
+      <div className="grid grid-cols-3 gap-4">
+        {components.length > 0 ? (
+          components.map((component) => (
+            <div
+              key={component._id}
+              className="component_card grid grid-cols-3 gap-4"
+            >
               <div className="componentCard_firstSec">
                 <div className="rating_container">
                   <span className="rating_value">{component.rating}</span>
@@ -57,11 +60,11 @@ const BrowseComponentList = ({
                 </div>
               </div>
             </div>
-          </div>
-        ))
-      ) : (
-        <p>No components found.</p>
-      )}
+          ))
+        ) : (
+          <p>No components found.</p>
+        )}
+      </div>
     </div>
   );
 };

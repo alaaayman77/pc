@@ -248,8 +248,11 @@ function Filters({
         </div>
         <div className="filter_secondary">
           <Menu mode="inline" items={filterItems} />
-          <h3>Sort By</h3>
-          <Menu mode="inline" items={sortingItems} />
+          <div className="filter_divider"></div>
+          <div className="filter_sorting">
+            <h3>Sort By</h3>
+            <Menu mode="inline" items={sortingItems} />
+          </div>
         </div>
       </div>
     </div>

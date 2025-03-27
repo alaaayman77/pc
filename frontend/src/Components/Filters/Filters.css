@@ -82,7 +82,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 2em;
 }
 
 /* Make the menu take the full width */
@@ -246,4 +246,10 @@
 }
 .sort-option.selected {
   clip-path: inset(0 round 12px);
+}
+.filter_divider {
+  background-color: white;
+  width: 90%;
+  align-self: center;
+  height: 1px;
 }

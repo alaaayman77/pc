@@ -16,8 +16,10 @@
 
 .browsecomponents_products {
   display: flex;
-  justify-content: flex-start; /* Centers the row */
+  justify-content: center; /* Centers the row */
   width: 100%;
+
+  gap: 3em; /* Adds spacing between cards */
 }
 
 /* Component Card Styling */
@@ -30,12 +32,14 @@
   align-items: center;
   padding: 1.5em;
   border-radius: 1em;
-  position: relative;
+
   width: 230px;
-  height: 460px;
+  height: 480px;
   margin: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
+  gap: 2em;
+  background-color: aquamarine;
 }
 
 .component_card:hover {
@@ -97,7 +101,7 @@
 
 /* Title & Price */
 .component_title {
-  font-size: 16px;
+  font-size: 14px;
 
   margin-top: 10px;
   text-align: center;
@@ -166,6 +170,7 @@
   justify-content: flex-end;
   width: 100%;
 }
+
 /* Remove background from page numbers */
 .ant-pagination-item {
   background: transparent !important;
