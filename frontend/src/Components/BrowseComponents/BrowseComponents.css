@@ -1,0 +1,232 @@
+/* Layout Styling */
+.browsecomponents_container {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: space-around;
+}
+
+.browsecomponents_filter {
+  width: 25%;
+}
+
+.browsecomponents_main {
+  width: 75%;
+}
+
+.browsecomponents_products {
+  display: flex;
+  justify-content: center; /* Centers the row */
+  width: 100%;
+
+  gap: 3em; /* Adds spacing between cards */
+}
+
+/* Component Card Styling */
+
+/* Component Card */
+.component_card {
+  background-color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5em;
+  border-radius: 1em;
+
+  width: 230px;
+  height: 480px;
+  margin: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  gap: 2em;
+}
+
+.component_card:hover {
+  transform: scale(1.05);
+}
+
+/* Image Styling */
+.browsecomponent_Component img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover; /* Ensures uniform sizing without distortion */
+  border-radius: 8px;
+}
+
+.componentCard_firstSec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.favorite-icon {
+  background: rgba(255, 255, 255, 0.873);
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+}
+
+/* Favorite Icon */
+.unfavorited {
+  color: rgb(127, 108, 108); /* Black outline for unselected heart */
+  font-size: 20px;
+}
+
+.favorited {
+  color: red; /* Red heart when selected */
+  font-size: 20px;
+}
+.componentCard_secondSec {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  justify-content: center;
+}
+
+/* Image */
+.component_image {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Title & Price */
+.component_title {
+  font-size: 14px;
+
+  margin-top: 10px;
+  text-align: center;
+}
+.component_price span {
+  color: rgb(127, 108, 108);
+  font-size: 14px;
+  padding: 0.5em;
+}
+.component_price {
+  font-size: 18px;
+  color: white;
+  text-align: center;
+}
+
+/* Rating */
+.rating_container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rating_value {
+  font-size: 18px;
+  color: white;
+}
+
+.rating_star {
+  color: gold;
+  font-size: 24px;
+}
+
+/* Compare Icon */
+.compare-icon svg {
+  font-size: 14px;
+  color: white;
+  align-self: center;
+}
+.compare-icon.compared svg,
+.compare-icon.compared {
+  color: #007bff; /* Blue when selected */
+}
+
+.compare-icon {
+  display: flex;
+  font-size: small;
+  align-items: center;
+  margin-top: 0.5em;
+  align-self: center;
+}
+.compare-icon button {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  gap: 0.2em;
+}
+
+.browsecomponents_pagination {
+  display: flex;
+  justify-content: flex-end; /* Align pagination to the end (right) */
+  padding: 10px;
+}
+
+.pagination_wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* Remove background from page numbers */
+.ant-pagination-item {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Remove background on active page */
+.ant-pagination-item-active {
+  background: transparent !important;
+  border: 1px solid white !important; /* Add white border if needed */
+}
+
+/* Make text color white */
+.ant-pagination-item a {
+  color: white !important;
+}
+
+/* Change hover effect */
+.ant-pagination-item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Remove default background from arrows */
+.ant-pagination-prev,
+.ant-pagination-next {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Make arrow icons white */
+.ant-pagination-prev button,
+.ant-pagination-next button {
+  color: white !important;
+}
+
+/* Change hover color for arrows */
+.ant-pagination-prev:hover button,
+.ant-pagination-next:hover button {
+  color: lightgray !important;
+}
+/* Change jump arrows (skip 5 pages) to white */
+.ant-pagination-jump-prev .ant-pagination-item-container .anticon,
+.ant-pagination-jump-next .ant-pagination-item-container .anticon {
+  color: lightgray !important;
+}
+
+/* Change hover color for jump arrows */
+.ant-pagination-jump-prev:hover .ant-pagination-item-container .anticon,
+.ant-pagination-jump-next:hover .ant-pagination-item-container .anticon {
+  color: lightgray !important;
+}
+/* Change jump arrows (skip 5 pages) to white */
+.ant-pagination-jump-prev
+  .ant-pagination-item-container
+  .ant-pagination-item-ellipsis,
+.ant-pagination-jump-next
+  .ant-pagination-item-container
+  .ant-pagination-item-ellipsis {
+  color: white !important;
+}

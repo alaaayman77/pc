@@ -1,5 +1,10 @@
+// App.jsx
 import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Builder from "./Components/Builder/Builder";
 import Guides from "./Components/Guides/Guides";
@@ -11,11 +16,7 @@ import Profile from "./Components/Profile/Profile";
 import Login from "./Components/Login/login";
 import Signup from "./Components/Signup/Signup";
 import AIAssistant from "./Components/AIAssistant/AIAssistant";
-import ProfileBuildCard from "./Components/ProfileBuildCard/ProfileBuildCard";
-
-import ProfileBuildDetails from "./Components/ProfileBuildDetails/ProfileBuildDetails";
-import EditableTextField from "./Components/EditableTextField/EditableTextField";
-import EditProfilePopUp from "./Components/EditProfilePopUp/EditProfilePopUp";
+import { SavedComponentsProvider } from "./Context/SavedComponentContext"; // Import the provider
 
 let x = createBrowserRouter([
   {
@@ -26,22 +27,29 @@ let x = createBrowserRouter([
       { path: "builder", element: <Builder /> },
       { path: "guides", element: <Guides /> },
       { path: "community", element: <Community /> },
-      { path: "browsecomponents", element: <BrowseComponents /> },
+      {
+        path: "browsecomponents",
+        children: [
+          { index: true, element: <Navigate to="all" replace /> },
+          { path: ":type", element: <BrowseComponents /> },
+        ],
+      },
       { path: "profile", element: <Profile /> },
       { path: "ai_assistant", element: <AIAssistant /> },
-
-      { path: "*", element: <EditProfilePopUp /> },
+      { path: "*", element: <NotFound /> },
     ],
   },
   { path: "login", element: <Login /> },
   { path: "signup", element: <Signup /> },
-  ,
 ]);
+
 function App() {
   return (
     <>
-      <div className="overflow-x-hidden ">
-        <RouterProvider router={x}></RouterProvider>
+      <div>
+        <SavedComponentsProvider>
+          <RouterProvider router={x}></RouterProvider>
+        </SavedComponentsProvider>
       </div>
     </>
   );

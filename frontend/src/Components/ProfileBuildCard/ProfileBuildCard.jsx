@@ -3,11 +3,12 @@ import BuildDummy from "../../assets/images/build_dummy.svg";
 import ProfileBuildDetails from "../ProfileBuildDetails/ProfileBuildDetails";
 import "./ProfileBuildCard.css";
 
-function ProfileBuildCard({ buildTitle, onDeleteBuild }) {
+function ProfileBuildCard({ buildTitle, buildImage, onDeleteBuild }) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [title, setTitle] = useState(buildTitle); // Initial title
+  const [title, setTitle] = useState(buildTitle);
 
   const toggleDetails = () => {
+    console.log("Toggling details for build:", buildTitle);
     setIsExpanded(!isExpanded);
   };
 
@@ -15,7 +16,7 @@ function ProfileBuildCard({ buildTitle, onDeleteBuild }) {
     <div className="profile_buildCard">
       <div className="profile_buildCard_main">
         <div className="profile_buildCard_info">
-          <img src={BuildDummy} width={120} alt="Build" />
+          <img src={buildImage || BuildDummy} width={120} alt="Build" />
           <h3 className="profile_buildCard_title">{buildTitle}</h3>
         </div>
         <div className="profile_buildCard_buttons">

@@ -11,6 +11,12 @@ const TabContent = ({
   setOpenPopUp,
 }) => {
   const onDeleteBuild = (folderIndex, buildId) => {
+    console.log(
+      "Deleting build with ID:",
+      buildId,
+      "from folder:",
+      folderIndex
+    );
     setFolders((prevFolders) => {
       const updatedFolders = { ...prevFolders };
       const builds = updatedFolders[tabKey]?.[folderIndex]?.profileBuilds || [];
@@ -19,6 +25,7 @@ const TabContent = ({
         (build) => build.id !== buildId
       );
 
+      console.log("Updated folders after deleting build:", updatedFolders);
       return updatedFolders;
     });
   };
@@ -44,6 +51,7 @@ const TabContent = ({
                     <ProfileBuildCard
                       key={profileBuild.id}
                       buildTitle={profileBuild.title}
+                      buildImage={profileBuild.image_source}
                       onDeleteBuild={() =>
                         onDeleteBuild(folderIndex, profileBuild.id)
                       }

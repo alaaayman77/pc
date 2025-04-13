@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { Tabs, Collapse, Avatar } from "antd";
 import { MdAddCircle } from "react-icons/md";
 import "./Profile.css";
 import NewFolderPopUp from "../NewFolderPopUp/NewFolderPopUp";
 import ProfileBuildCard from "../ProfileBuildCard/ProfileBuildCard";
-
 import TabContent from "../ProfileTabContent/ProfileTabContent";
 import EditProfilePopUp from "../EditProfilePopUp/EditProfilePopUp";
 import { UserOutlined } from "@ant-design/icons";
+import { SavedComponentsContext } from "../../Context/SavedComponentContext";
+
 function Profile() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Extract tab from URL or default to "1"
   const queryParams = new URLSearchParams(location.search);
-  // Search for a certain query parameter (I need tab in my case)
   const initialTab = queryParams.get("tab") || "1";
   const [activeTab, setActiveTab] = useState(initialTab);
   const [openPopUp, setOpenPopUp] = useState(false);
@@ -45,22 +44,54 @@ function Profile() {
       },
     ],
     3: [
-      { name: "CPUs", profileBuilds: [] },
-      { name: "GPUs", profileBuilds: [] },
-      { name: "Motherboards", profileBuilds: [] },
-      { name: "RAM", profileBuilds: [] },
-      { name: "Cases", profileBuilds: [] },
-      { name: "Storage", profileBuilds: [] },
-      { name: "Cooling", profileBuilds: [] },
-      { name: "Power Supply", profileBuilds: [] },
+      { name: "all", profileBuilds: [] },
+      { name: "cpu", profileBuilds: [] },
+      { name: "gpu", profileBuilds: [] },
+      { name: "motherboard", profileBuilds: [] },
+      { name: "ram", profileBuilds: [] },
+      { name: "case", profileBuilds: [] },
+      { name: "storage", profileBuilds: [] },
+      { name: "cooling", profileBuilds: [] },
+      { name: "power supply", profileBuilds: [] },
     ],
   });
 
-  //Updates UI if i changed query parameter manually
+  const { savedComponents } = useContext(SavedComponentsContext);
+
   useEffect(() => {
-    // Sync state with URL changes (useful if the user manually updates the URL)
-    setActiveTab(queryParams.get("tab") || "1");
+    const newTab = queryParams.get("tab") || "1";
+    if (newTab !== activeTab) {
+      setActiveTab(newTab);
+    }
   }, [location.search]);
+
+  useEffect(() => {
+    if (!savedComponents || typeof savedComponents !== "object") {
+      return;
+    }
+
+    setFolders((prev) => {
+      const updatedFolders = { ...prev };
+      let hasChanged = false;
+
+      updatedFolders[3] = updatedFolders[3].map((folder) => {
+        const folderKey = folder.name.toLowerCase();
+        const componentsForFolder = savedComponents[folderKey];
+
+        if (
+          componentsForFolder &&
+          JSON.stringify(componentsForFolder) !==
+            JSON.stringify(folder.profileBuilds)
+        ) {
+          hasChanged = true;
+          return { ...folder, profileBuilds: componentsForFolder };
+        }
+        return folder;
+      });
+
+      return hasChanged ? updatedFolders : prev;
+    });
+  }, [savedComponents]);
 
   const handleDeleteFolder = (folderIndex) => {
     setFolders((prev) => {
@@ -80,7 +111,7 @@ function Profile() {
       ...prev,
       [activeTab]: [
         ...(prev[activeTab] ?? []),
-        { name: folderName, profileBuilds: [] }, // ✅ Store as an object
+        { name: folderName, profileBuilds: [] },
       ],
     }));
     setTimeout(() => setOpenPopUp(false), 0);
@@ -115,10 +146,12 @@ function Profile() {
       <div className="profile_secondary">
         <Tabs
           centered
-          activeKey={activeTab} // Ensure active tab state is in sync
+          activeKey={activeTab}
           onChange={(key) => {
-            setActiveTab(key);
-            navigate(`?tab=${key}`, { replace: true }); // Update URL without adding to history
+            if (key !== activeTab) {
+              setActiveTab(key);
+              navigate(`?tab=${key}`, { replace: true });
+            }
           }}
           items={[
             {
@@ -164,14 +197,12 @@ function Profile() {
         />
       </div>
 
-      {/* Render PopUp Conditionally */}
       {openPopUp && (
         <NewFolderPopUp
           setOpenPopUp={setOpenPopUp}
           handleSaveFolder={handleSaveFolder}
         />
       )}
-      {/* Render Edit ProfilePopUp Conditionally */}
       {openEditProfilePopUp && (
         <EditProfilePopUp
           setOpenEditProfilePopUp={setOpenEditProfilePopUp}
