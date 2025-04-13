@@ -1,0 +1,124 @@
+.register_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+.register_logo {
+  margin-top: 4em;
+  margin-left: 3em;
+  align-self: flex-start;
+}
+.register_primary {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-self: flex-start;
+}
+
+.register_main {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  gap: 2em;
+}
+.register_header {
+  align-self: center;
+  font-size: 40px;
+}
+
+.register_title {
+  padding: 0em 0.5em;
+  flex: 1;
+  font-size: 70px;
+  font-weight: 700;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.register_form {
+  width: 100%;
+  max-width: 400px;
+  align-self: center;
+}
+.register_form button {
+  width: 100%;
+  background-color: #621c74;
+  margin-top: 3em;
+}
+.register_form button:hover {
+  background-color: #380f42 !important;
+}
+/* Change tooltip icon color to white */
+.ant-form-item-label > label .anticon {
+  color: white !important;
+}
+
+/* Ensure tooltip text is also white */
+.ant-tooltip-inner {
+  color: white !important;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.75
+  ) !important; /* Adjust background if needed */
+}
+
+/* Change tooltip arrow color */
+.ant-tooltip-arrow {
+  border-color: rgba(0, 0, 0, 0.75) !important;
+}
+/* Default password eye icon color (dark gray) */
+.ant-input-password-icon {
+  color: rgb(92, 91, 91) !important; /* Dark gray */
+  transition: color 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Password eye icon color on hover (purple) */
+.ant-input-password-icon:hover {
+  color: #621c74 !important; /* Purple */
+}
+.register_footer {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+
+  flex-direction: column;
+}
+.divider-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 400px; /* Match register_form width */
+
+  justify-content: center; /* Ensures it's centered */
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: white;
+  opacity: 0.5; /* Adjust transparency if needed */
+}
+
+.divider-text {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 0em 1em;
+}
+
+.register_icons {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  padding: 1em;
+}
+.register_text {
+  align-self: center;
+  padding: 1em;
+}
