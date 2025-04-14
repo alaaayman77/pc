@@ -30,15 +30,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5em;
+  padding: 1em;
   border-radius: 1em;
 
-  width: 230px;
-  height: 480px;
+  width: 200px;
+  height: 400px;
   margin: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
-  gap: 2em;
 }
 
 .component_card:hover {
@@ -47,8 +46,8 @@
 
 /* Image Styling */
 .browsecomponent_Component img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   object-fit: cover; /* Ensures uniform sizing without distortion */
   border-radius: 8px;
 }
@@ -58,12 +57,9 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
 }
 
 .favorite-icon {
-  background: rgba(255, 255, 255, 0.873);
   padding: 6px;
   border-radius: 50%;
   cursor: pointer;
@@ -75,7 +71,7 @@
 
 /* Favorite Icon */
 .unfavorited {
-  color: rgb(127, 108, 108); /* Black outline for unselected heart */
+  color: #bf30d9; /* Black outline for unselected heart */
   font-size: 20px;
 }
 
@@ -100,18 +96,18 @@
 
 /* Title & Price */
 .component_title {
-  font-size: 14px;
+  font-size: 12px;
 
   margin-top: 10px;
   text-align: center;
 }
 .component_price span {
   color: rgb(127, 108, 108);
-  font-size: 14px;
+  font-size: 12px;
   padding: 0.5em;
 }
 .component_price {
-  font-size: 18px;
+  font-size: 12px;
   color: white;
   text-align: center;
 }
@@ -124,18 +120,18 @@
 }
 
 .rating_value {
-  font-size: 18px;
+  font-size: 12px;
   color: white;
 }
 
 .rating_star {
   color: gold;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 /* Compare Icon */
 .compare-icon svg {
-  font-size: 14px;
+  font-size: 12px;
   color: white;
   align-self: center;
 }
@@ -229,4 +225,63 @@
   .ant-pagination-item-container
   .ant-pagination-item-ellipsis {
   color: white !important;
+}
+/* Responsive CSS - Add this to BrowseComponents.css */
+
+@media screen and (max-width: 1024px) {
+  .browsecomponents_container {
+    flex-direction: column;
+    padding: 1em;
+  }
+
+  .browsecomponents_filter,
+  .browsecomponents_main {
+    width: 100%;
+  }
+
+  .browsecomponents_products .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .browsecomponents_products .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .component_card {
+    width: 90%;
+    height: auto;
+  }
+
+  .component_image {
+    width: 100%;
+    height: auto;
+  }
+
+  .component_title,
+  .component_price {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .component_card {
+    padding: 0.5em;
+  }
+
+  .component_image {
+    width: 100%;
+    height: 150px;
+  }
+
+  .component_title,
+  .component_price {
+    font-size: 12px;
+  }
+
+  .compare-icon button {
+    font-size: 12px;
+    padding: 0.3em 0.6em;
+  }
 }

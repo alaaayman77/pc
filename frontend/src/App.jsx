@@ -12,10 +12,12 @@ import Community from "./Components/Community/Community";
 import BrowseComponents from "./Components/BrowseComponents/BrowseComponents";
 import Layout from "./Components/Layout/Layout";
 import NotFound from "./Components/NotFound/NotFound";
+
 import Profile from "./Components/Profile/Profile";
 import Login from "./Components/Login/login";
 import Signup from "./Components/Signup/Signup";
 import AIAssistant from "./Components/AIAssistant/AIAssistant";
+import FullComponentDetails from "./Components/FullComponentDetails/FullComponentDetails";
 import { SavedComponentsProvider } from "./Context/SavedComponentContext"; // Import the provider
 
 let x = createBrowserRouter([
@@ -36,7 +38,7 @@ let x = createBrowserRouter([
       },
       { path: "profile", element: <Profile /> },
       { path: "ai_assistant", element: <AIAssistant /> },
-      { path: "*", element: <NotFound /> },
+      { path: "*", element: <FullComponentDetails /> },
     ],
   },
   { path: "login", element: <Login /> },

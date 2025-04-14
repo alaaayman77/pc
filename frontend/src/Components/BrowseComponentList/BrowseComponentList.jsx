@@ -9,11 +9,26 @@ const BrowseComponentList = ({
   toggleFavorite,
   compareList,
   toggleCompare,
-  isLoading, // Pass this as a prop
+  isLoading,
+  onComponentClick,
 }) => {
+  const handleCardClick = (component) => {
+    onComponentClick(component);
+  };
+
+  const handleFavoriteClick = (e, component) => {
+    e.stopPropagation();
+    toggleFavorite(component);
+  };
+
+  const handleCompareClick = (e, componentId) => {
+    e.stopPropagation();
+    toggleCompare(componentId);
+  };
+
   return (
     <div className="browsecomponents_products">
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-4 gap-4">
         {isLoading ? (
           Array.from({ length: 6 }).map((_, index) => (
             <ComponentShimmer key={index} />
@@ -22,7 +37,8 @@ const BrowseComponentList = ({
           components.map((component) => (
             <div
               key={component._id}
-              className="component_card grid grid-cols-3 gap-4"
+              className="component_card grid grid-cols-4 gap-4 cursor-pointer"
+              onClick={() => handleCardClick(component)}
             >
               <div className="componentCard_firstSec">
                 <div className="rating_container">
@@ -33,7 +49,7 @@ const BrowseComponentList = ({
                   className={`favorite-icon ${
                     favorites.includes(component._id) ? "favorited" : ""
                   }`}
-                  onClick={() => toggleFavorite(component)}
+                  onClick={(e) => handleFavoriteClick(e, component)}
                 >
                   {favorites.includes(component._id) ? (
                     <FaHeart className="favorited" />
@@ -57,7 +73,7 @@ const BrowseComponentList = ({
                   className={`compare-icon ${
                     compareList.includes(component._id) ? "compared" : ""
                   }`}
-                  onClick={() => toggleCompare(component._id)}
+                  onClick={(e) => handleCompareClick(e, component._id)}
                 >
                   <button>
                     <p>Compare</p>

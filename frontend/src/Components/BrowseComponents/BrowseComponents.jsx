@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import { useParams, useSearchParams, useNavigate } from "react-router-dom";
-import { Pagination } from "antd";
+import { Pagination, Modal } from "antd";
 import NestedNavBar from "../NestedNavBar/NestedNavBar";
 import Filters from "../Filters/Filters";
 import axios from "axios";
 import "./BrowseComponents.css";
 import { SavedComponentsContext } from "../../Context/SavedComponentContext";
 import ComponentList from "../BrowseComponentList/BrowseComponentList";
+import FullComponentDetails from "../FullComponentDetails/FullComponentDetails";
+import { IoIosClose } from "react-icons/io";
+import { FaTimes } from "react-icons/fa";
 
 function BrowseComponents() {
   const { type = "all" } = useParams();
@@ -18,11 +21,13 @@ function BrowseComponents() {
   const [sortBy, setSortBy] = useState(null);
   const [filters, setFilters] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedComponent, setSelectedComponent] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const { savedComponents, setSavedComponents } = useContext(
     SavedComponentsContext
   );
 
-  const pageSize = 10;
+  const pageSize = 15;
   const currentPage = parseInt(searchParams.get("page")) || 1;
 
   const getComponents = useCallback(
@@ -110,6 +115,16 @@ function BrowseComponents() {
     [navigate, type]
   );
 
+  const handleComponentClick = useCallback((component) => {
+    setSelectedComponent(component);
+    setIsModalVisible(true);
+  }, []);
+
+  const handleModalClose = useCallback(() => {
+    setIsModalVisible(false);
+    setSelectedComponent(null);
+  }, []);
+
   useEffect(() => {
     // Clear filters when type changes
     setFilters({});
@@ -153,6 +168,7 @@ function BrowseComponents() {
             compareList={compareList}
             toggleCompare={toggleCompare}
             isLoading={isLoading}
+            onComponentClick={handleComponentClick}
           />
         </div>
         <div className="browsecomponents_pagination">
@@ -167,6 +183,46 @@ function BrowseComponents() {
           />
         </div>
       </div>
+
+      <Modal
+        open={isModalVisible}
+        onCancel={handleModalClose}
+        footer={null}
+        width={800}
+        centered
+        className="custom-modal-dark"
+        styles={{
+          content: {
+            backgroundColor: "rgba(44, 43, 44, 0.9)",
+          },
+          mask: {
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+          },
+        }}
+        closeIcon={
+          <span
+            className="FullDetails_custom-close-icon"
+            style={{
+              color: "var(--text-secondary)",
+              transition: "color 0.2s ease",
+              fontSize: "20px",
+              "&:hover": {
+                color: "white",
+              },
+            }}
+          >
+            <FaTimes />
+          </span>
+        }
+      >
+        {selectedComponent && (
+          <FullComponentDetails
+            component={selectedComponent}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+          />
+        )}
+      </Modal>
     </div>
   );
 }

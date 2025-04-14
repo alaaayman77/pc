@@ -1,0 +1,374 @@
+:root {
+  --dark-bg: rgba(0, 0, 0, 0.9);
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(148, 148, 148, 0.7);
+  --border-color: rgba(255, 255, 255, 0.5);
+
+  --star-color: rgba(250, 173, 20, 1);
+  --heart-color: rgba(255, 77, 79, 1);
+  --dot-color: rgba(255, 255, 255, 0.5);
+}
+.FullDetails_custom-close-icon {
+  color: var(--text-secondary) !important;
+  transition: color 0.2s ease;
+}
+
+/* Remove all default Ant Design close button styles */
+.ant-modal-close {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.custom-modal-dark .ant-modal-close:hover .FullDetails_custom-close-icon {
+  color: var(--text-primary) !important;
+  transform: scale(1.1);
+}
+
+.FullDetails_container {
+  display: flex;
+  gap: 2rem;
+  color: var(--text-primary);
+}
+
+.FullDetails_primary {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.FullDetails_secondary {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.FullDetails_favorite {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.FullDetails_favorite .favorite-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-primary);
+}
+
+.FullDetails_favorite .favorite-icon:hover {
+  transform: scale(1.1);
+  color: var(--heart-color);
+}
+
+.FullDetails_favorite .favorited {
+  color: var(--heart-color);
+}
+
+.FullDetails_image img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+}
+
+.FullDetails_divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 1rem 0;
+}
+
+.FullDetails_description h3,
+.FullDetails_specs h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.FullDetails_description p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.FullDetails_secondary h2 {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.FullDetails_price_rate {
+  display: flex;
+  justify-content: space-between;
+}
+
+.FullDetails_rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.FullDetails_rating .rating_star {
+  color: var(--star-color);
+}
+
+.FullDetails_price {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.FullDetails_price span {
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.FullDetails_specs {
+  margin-top: 1.5rem;
+}
+
+.FullDetails_specs-list {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.FullDetails_spec-item {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.FullDetails_spec-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+.FullDetails_spec-label {
+  min-width: 150px;
+  display: inline-block;
+  color: #bf30d9;
+  font-weight: 500;
+  margin-right: 1rem;
+}
+
+.FullDetails_spec-value {
+  color: var(--text-primary);
+  flex: 1;
+  word-break: break-word;
+}
+
+.FullDetails_no-specs-message {
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 0.5rem 0;
+}
+
+.FullDetails_Buttons {
+  display: flex;
+
+  height: 100%;
+  align-items: flex-end;
+  margin-bottom: 1em;
+}
+
+.FullDetails_share-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: #bf30d9;
+  color: var(--text-primary);
+}
+
+.FullDetails_share-button:hover {
+  background: #88219a;
+}
+
+.FullDetails_button-icon {
+  font-size: 1.1rem;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 768px) {
+  .FullDetails_container {
+    flex-direction: column;
+  }
+
+  .FullDetails_image img {
+    max-height: 300px;
+  }
+
+  .FullDetails_spec-item {
+    flex-direction: column;
+    padding-left: 1.5rem;
+  }
+
+  .FullDetails_spec-label {
+    margin-bottom: 0.25rem;
+    margin-right: 0;
+  }
+
+  .FullDetails_Buttons {
+    flex-direction: column;
+  }
+}
+
+.share-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.share-modal-content {
+  background: rgba(44, 43, 44, 0.9);
+
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.share-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.share-modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+}
+
+.close-share-menu {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 5px;
+  transition: color 0.2s;
+}
+
+.close-share-menu:hover {
+  color: var(--text-primary);
+}
+
+.share-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.share-option {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 80px;
+  aspect-ratio: 1/1;
+}
+
+.share-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.share-option-icon {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.share-option-text {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* Platform-specific icon colors */
+.whatsapp-icon {
+  color: #25d366;
+}
+.facebook-icon {
+  color: #1877f2;
+}
+.twitter-icon {
+  color: #1da1f2;
+}
+.telegram-icon {
+  color: #0088cc;
+}
+.reddit-icon {
+  color: #ff4500;
+}
+.link-icon {
+  color: var(--text-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .share-options-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .share-option {
+    min-height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .share-modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .share-options-grid {
+    gap: 8px;
+  }
+
+  .share-option-icon {
+    font-size: 1.5rem;
+  }
+
+  .share-option-text {
+    font-size: 0.8rem;
+  }
+}

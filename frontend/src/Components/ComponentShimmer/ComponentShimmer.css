@@ -14,8 +14,8 @@
   align-items: center;
   padding: 1.5em;
   border-radius: 1em;
-  width: 230px;
-  height: 480px;
+  width: 200px;
+  height: 400px;
   margin: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   gap: 2em;
@@ -36,8 +36,8 @@
 }
 
 .shimmer_image {
-  width: 180px;
-  height: 180px;
+  width: 140px;
+  height: 140px;
 }
 
 .shimmer_title,
